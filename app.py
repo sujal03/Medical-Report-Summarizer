@@ -72,11 +72,3 @@ if submit:
                 st.write(response)
             except Exception as e:
                 st.error(f"An error occurred: {e}")
-
-# Set port for Render deployment
-port = int(os.environ.get('PORT', 8501))
-st.write(f"Running on port {port}...")
-
-# Running the app on the correct port
-if __name__ == '__main__':
-    st.run()
