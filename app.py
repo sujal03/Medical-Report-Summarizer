@@ -11,16 +11,6 @@ genai.configure(api_key=api_key)
 
 # Function to get response from the model
 def get_gemini_response(user_input, image):
-    """
-    Generates a response from the Gemini model based on user input and an image.
-    
-    Args:
-        user_input (str): The user's prompt or instruction.
-        image (PIL.Image): The uploaded image of the medical document.
-    
-    Returns:
-        str: The model's response text.
-    """
     model = genai.GenerativeModel('gemini-1.5-pro-latest')
     if not user_input:
         # Default prompt for medical document analysis
@@ -82,3 +72,11 @@ if submit:
                 st.write(response)
             except Exception as e:
                 st.error(f"An error occurred: {e}")
+
+# Set port for Render deployment
+port = int(os.environ.get('PORT', 8501))
+st.write(f"Running on port {port}...")
+
+# Running the app on the correct port
+if __name__ == '__main__':
+    st.run()
